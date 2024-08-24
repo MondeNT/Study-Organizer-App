@@ -32,25 +32,25 @@ These credentials are hardcoded into the application and are required for initia
 ## Screenshots
 
 - **Login Page**
-  ![Login](./path/to/Login.png)
+  ![Login](https://github.com/user-attachments/assets/23eabea7-db85-48b8-bdf8-ab3eee675f43)
   
 - **Register Module - Step 1**
-  ![Register Module 1](./path/to/Register-Module1.png)
+  ![Register-Module1](https://github.com/user-attachments/assets/f3b08680-067a-4349-8b7a-fb658e7e1ea8)
 
 - **Register Module - Step 2**
-  ![Register Module 2](./path/to/Register-Module2.png)
+  ![Register-Module2](https://github.com/user-attachments/assets/5b2cf3ff-407b-45a3-bbb9-5de397dac4e2)
 
 - **Register Module - Step 3**
-  ![Register Module 3](./path/to/Register-Module3.png)
+  ![Register-Module3](https://github.com/user-attachments/assets/4dfaf684-483a-4f30-9d20-b3aec244b2da)
 
 - **Add Another Module Option**
-  ![Add Module](./path/to/Add-Another-Module-Option.png)
+  ![Add-Another Module-Option](https://github.com/user-attachments/assets/fe067d0d-6433-48e6-b241-a5ec39d2b8ee)
 
 - **Module Details**
-  ![Module Details](./path/to/Module-Details.png)
+  ![Module-Details](https://github.com/user-attachments/assets/beb0fb1b-cce9-4315-ab2a-6dbe9d11de82)
 
 - **Edit Module**
-  ![Edit Module](./path/to/Edit-Module.png)
+  ![Edit-Module](https://github.com/user-attachments/assets/8b7a0e99-7e8a-4c9d-9784-cb2e6c923cc9)
 
 ## Getting Started
 
