@@ -50,7 +50,7 @@ These credentials are hardcoded into the application and are required for initia
   ![Module-Details](https://github.com/user-attachments/assets/beb0fb1b-cce9-4315-ab2a-6dbe9d11de82)
 
 - **Edit Module**
-  ![Edit-Module](https://github.com/user-attachments/assets/8b7a0e99-7e8a-4c9d-9784-cb2e6c923cc9)
+  ![Edit-Module](https://github.com/user-attachments/assets/f26680dc-ee0d-4812-b727-b9c627d9017b)
 
 ## Getting Started
 
