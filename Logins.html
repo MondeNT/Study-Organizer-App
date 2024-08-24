@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="#.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        
+        header {
+            background-color: #fff;
+            padding: 10px 0;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+        h1 {
+            font-size: 30px;
+            font-family: "Arial", sans-serif;
+            color: #ff0000;
+            margin: 0;
+        }
+        #current-date {
+            font-size: 20px;
+            font-family: "Arial", sans-serif;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+            color: red;
+        }
+       
+        body {
+            background-image: url('Images/Background.jpg');
+            background-attachment: fixed;
+            background-size: cover; 
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 45px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            max-width: 400px; 
+            margin: 150px auto; 
+        }
+        .login-form {
+            margin: 0;
+        }
+
+        .login-form h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+        }
+        .input-with-icon {
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .input-with-icon input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 16px;
+            width: calc(100% - 40px); 
+        }
+        .input-with-icon i {
+            margin-left: -30px; 
+        }
+        label {
+            text-align: left;
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 16px;
+            justify-content: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(236, 43, 43);
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="Images/SPU-logo.jpg" alt="Sol Plaatje University Logo">
+                <h1>Sol Plaatje University</h1>
+            </div>
+        </nav>
+        <div id="current-date"></div>
+        <script>
+            var currentDate = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            var formattedDate = currentDate.toLocaleDateString(undefined, options);
+            document.getElementById("current-date").textContent = formattedDate;
+        </script>
+    </header>
+
+    <div class="container">
+        <form class="login-form" id="login-form" action="StudentOrganizer.html" method="POST">
+            <h1>Login</h1>
+            <div class="input-container">
+                <div class="input-with-icon">
+                    <i class='bx bxs-user'></i>
+                    <input type="text" id="student-number" name="student_number" placeholder="Username" maxlength="9" required>
+                </div>
+            </div>
+            <div class="input-container">
+                <div class="input-with-icon">
+                    <i class='bx bx-lock'></i>
+                    <input type="password" id="pin" name="pin" placeholder="Password" maxlength="5" required>
+                </div>
+            </div>
+            <button type="button" onclick="validateForm()">Login</button>
+        </form>
+    </div>
+
+    <script>
+        
+        function validateForm() {
+            var studentNumber = document.getElementById("student-number").value;
+            var pin = document.getElementById("pin").value;
+            var errorMessage = document.getElementById("error-message");
+
+            
+            var validStudentNumber = "202207566";
+            var validPin = "12345";
+
+            if (studentNumber === validStudentNumber) {
+                if (pin === validPin) {
+                    
+                    window.location.href = "StudentOrganizer.html";
+                } else if (pin.startsWith("0")) {
+                    alert("PIN must not start with zero.");
+                    errorMessage.style.display = "block";
+                } else {
+                    alert("Incorrect login credentials. Please try again.");
+                    errorMessage.style.display = "block";
+                }
+            } else {
+                alert("Incorrect login credentials. Please try again.");
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

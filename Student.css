@@ -1,0 +1,173 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 30px;
+    font-family: "Arial", sans-serif;
+    color: #ff0000;
+    margin: 0;
+}
+
+.centered-heading {
+    color: #ff0000;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    background-image: url('Background.jpg');
+    background-size: cover;
+    position: relative;
+    color: #fff;
+}
+
+h2 {
+    font-size: 24px;
+    font-family: "Arial", sans-serif;
+    margin-top: 20px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    margin: 5px;
+    color: #ff0000;
+}
+
+span {
+    font-weight: bold;
+}
+
+
+.footer {
+    background-color: #fff;
+    color: #150202;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+
+.background-section {
+    background-image: url('Uni2.jpg'); 
+    background-size: cover;
+    background-position: center;
+    padding: 20px; 
+    background-attachment: fixed; 
+    height: 1000px; 
+}
+
+
+header {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 30px;
+    font-family: "Arial", sans-serif;
+    color: #ff0000; 
+    margin: 0;
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff0000; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+}

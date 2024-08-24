@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="Student2.css">
+    <link rel="stylesheet" href="print-styles.css" media="print">
+    <style>
+       
+        #module-selector {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #module-dropdown {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            width: 150px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+        }
+
+        #module-dropdown:hover {
+            background-color: #ddd;
+        }
+
+        #module-dropdown select {
+            display: none;
+        }
+
+        #module-dropdown:after {
+            content: "\25BC";
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
+
+        
+        #module-dropdown select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+      
+        #related-data-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            min-height: 50px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+      
+        #related-data-container.empty {
+            min-height: 0;
+        }
+
+        #related-data-container h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        
+        #related-data-container .logo {
+            width: 100px; 
+        }
+
+  
+        #related-records {
+            width: 300px;
+            height: 400px;
+            background-color: white; 
+            border: 1px solid #ccc;
+            margin: 0 auto; 
+            overflow: auto; 
+            padding: 10px; 
+        }
+
+        #related-data {
+            font-family: Times New Roman, Times, serif;
+            font-size: 20px;
+        }
+
+        
+        #edit-button {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        #edit-button:hover {
+            background-color: darkred;
+        }
+
+        
+        #print-button {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        #print-button:hover {
+            background-color: darkred;
+        }
+
+        
+
+        
+        #save-edited-module {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            }
+
+        #save-edited-module:hover {
+            background-color: darkred;
+            }
+
+        .background-section {
+            padding-bottom: 20px; 
+            overflow: hidden; 
+            }
+
+        #edit-module-form-container {
+            display: block; 
+            }
+
+
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="Images/SPU-logo.jpg" alt="Sol Plaatje University Logo">
+                <h1>Sol Plaatje University</h1>
+            </div>
+            <ul>
+                <li><a href="StudentOrganizer.html">Add Modules</a></li>
+                <li><a href="Logins.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="background-section">
+        <div class="container">
+            <h1>Module Selection</h1>
+
+            <!-- Add a dropdown to select modules -->
+            <div id="module-selector">
+                <h2>Select Module</h2>
+                <div style="display: inline-flex; align-items: center;">
+                    <select id="module-dropdown">
+                        <option value="">Select Module</option>
+                    </select>
+                    <button id="edit-button" title="Edit"><i class='bx bx-edit'></i>Edit</button>
+                </div>
+            </div>
+
+            <!-- Add a section to display related records vertically -->
+            <div id="related-records" >
+                <h2 style="color: red;">Related Records</h2>
+                <div id="related-data" style="font-family: Times New Roman, Times, serif; font-size: 20px;">
+                    <!-- Data will be displayed here -->
+                </div>
+            </div>
+        </div>
+
+        <button id="print-button" onclick="printContent()">Print Content</button>
+
+        <div class="container">
+            <div id="edit-module-form-container" style="padding-top: 0px;">
+                <h2>Edit Module</h2>
+                <form id="edit-module-data-form" action="update.php" method="POST">
+                    <input type="hidden" id="edit-module-code" name="module_code">
+                    <label for="edit-module-name">Module Name:</label>
+                    <input type="text" id="edit-module-name" name="module_name">
+                    <label for="edit-module-credits">Module Credits:</label>
+                    <input type="number" id="edit-module-credits" name="module_credits">
+                    <label for="edit-module-weeks">Number of Weeks:</label>
+                    <input type="number" id="edit-module-weeks" name="num_weeks">
+                    <label for="edit-module-hours">Class Hours:</label>
+                    <input type="number" id="edit-module-hours" name="class_hours">
+                    <label for="edit-hours-studied">Hours Studied:</label>
+                    <input type="number" id="edit-hours-studied" name="hours_studied">
+                    <button type="button" id="save-edited-module" onclick="saveEditedModule()">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <form action="connect.php" method="POST"></form>
+
+    <script>
+        const moduleDropdown = document.getElementById("module-dropdown");
+        const relatedDataContainer = document.getElementById("related-data");
+        const editFormContainer = document.getElementById("edit-module-form-container");
+        const editButton = document.getElementById("edit-button");
+
+        // Function to populate the dropdown
+        function populateDropdown() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "retrieve.php", true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+
+                    moduleDropdown.innerHTML = '<option value="">Select Module</option>';
+                    data.forEach((module) => {
+                        const option = document.createElement("option");
+                        option.value = module.module_code;
+                        option.textContent = module.module_name;
+                        moduleDropdown.appendChild(option);
+                    });
+                } else {
+                    console.error("Error fetching data from retrieve.php");
+                }
+            };
+            xhr.send();
+        }
+
+        /// Function to fetch related records and display them using Fetch API
+function fetchRelatedRecords(selectedModuleId) {
+    fetch(`retrieve.php?module_code=${selectedModuleId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(relatedData => {
+            relatedDataContainer.innerHTML = "";
+
+            for (const key in relatedData) {
+                if (relatedData.hasOwnProperty(key)) {
+                    const div = document.createElement("div");
+                    div.innerHTML = `<b>${key}:</b> ${relatedData[key]}`;
+                    relatedDataContainer.appendChild(div);
+                }
+            }
+
+            // Display the edit form
+            document.getElementById("edit-module-code").value = relatedData.module_code;
+            document.getElementById("edit-module-name").value = relatedData.module_name;
+            document.getElementById("edit-module-credits").value = relatedData.module_credits;
+            document.getElementById("edit-module-weeks").value = relatedData.num_weeks;
+            document.getElementById("edit-module-hours").value = relatedData.class_hours;
+            document.getElementById("edit-hours-studied").value = relatedData.hours_studied; // Ensure this field is updated
+
+            editFormContainer.style.display = "block";
+        })
+        .catch(error => {
+            console.error("Error fetching related records:", error);
+        });
+}
+
+        // Populate the dropdown when the page loads
+        populateDropdown();
+
+        moduleDropdown.addEventListener("change", function () {
+            const selectedModuleId = moduleDropdown.value;
+
+            if (selectedModuleId !== "") {
+                fetchRelatedRecords(selectedModuleId);
+            }
+        });
+
+        // Add an event listener for the edit button
+        editButton.addEventListener("click", editModule);
+
+        // Function to edit the module
+        function editModule() {
+            const selectedModuleId = moduleDropdown.value;
+            if (selectedModuleId !== "") {
+                // Fetch the module data for editing from the server
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", `retrieve.php?module_code=${selectedModuleId}`, true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const moduleData = JSON.parse(xhr.responseText);
+                        if (moduleData) {
+                            // Populate the edit form with the module data
+                            document.getElementById("edit-module-code").value = moduleData.module_code;
+                            document.getElementById("edit-module-name").value = moduleData.module_name;
+                            document.getElementById("edit-module-credits").value = moduleData.module_credits;
+                            document.getElementById("edit-module-weeks").value = moduleData.num_weeks;
+                            document.getElementById("edit-module-hours").value = moduleData.class_hours;
+
+                            // Display the edit form
+                            editFormContainer.style.display = "block";
+                            editFormContainer.scrollIntoView({ behavior: 'smooth' });
+                            document.querySelector('.container').style.height = 'auto';
+                            
+                        } else {
+                            console.error("Module data not found.");
+                        }
+                    } else {
+                        console.error("Error fetching module data");
+                    }
+                };
+                xhr.send();
+            } else {
+                alert("Please select a module to edit.");
+            }
+        }
+
+        // Function to save the edited module details
+        function saveEditedModule() {
+            const form = document.getElementById("edit-module-data-form");
+            const formData = new FormData(form);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "update.php", true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Module details updated successfully
+                    alert("Module details updated successfully.");
+                    form.reset();
+                    editFormContainer.style.display = "none";
+                    populateDropdown();
+                } else {
+                    console.error("Error updating module details");
+                }
+            };
+            xhr.send(formData);
+        }
+
+        function printContent() {
+            var content = document.getElementById("related-data").innerHTML; // Get the content of the related-data container
+            var printWindow = window.open('', '', 'width=600,height=600');
+            printWindow.document.open();
+            printWindow.document.write('<html><head><title>Print</title>');
+            printWindow.document.write('<link rel="stylesheet" href="print-styles.css" media="print">'); // Include the print stylesheet
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(content); // Insert the content into the print window
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+            printWindow.close();
+            }
+
+            const editedFormContainer = document.getElementById("edit-module-form-container");
+            const container = document.getElementById("main-container");
+
+            // Function to handle scrolling
+            function handleScroll() {
+                if (window.scrollY === 0) {
+                    // Scrolled to the top, revert styles
+                    editFormContainer.style.display = "none";  // Hide the edit form container
+                    container.style.height = '100vh';  // Set container height back to full viewport height or any desired height
+
+                    // Smooth scroll to top of the container
+                    container.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            // Listen for scroll events
+            window.addEventListener('scroll', handleScroll);
+
+            
+    </script>
+
+</body>
+</html>
